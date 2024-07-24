@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Tile from './components/Tile/Tile';
@@ -8,6 +8,17 @@ export default function Root() {
     const [tileClicked, setTileClicked] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
+
+
+    useEffect(() => {
+        // Update tileClicked based on the current location
+        if (location.pathname === '/') {
+            setTileClicked(false);
+        } else {
+            setTileClicked(true);
+        }
+    }, [location.pathname]);
+
 
     const handleTileClicked = (link) => {
         setTileClicked(true);
@@ -64,10 +75,17 @@ export default function Root() {
                             link="memecreator" 
                             onClick={() => handleTileClicked('memecreator')} 
                         />
+                         <Tile 
+                            key="6" 
+                            title="Todo" 
+                            description="Plan your day" 
+                            link="todo" 
+                            onClick={() => handleTileClicked('todo')} 
+                        />
                     </div>
                 ) : (
                     <div>
-                        <div className="flex justify-end mb-4">
+                        <div className="flex justify-end mb-4 absolute right-4" >
                             <button
                                 className="bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                                 onClick={handleBackToProjects}

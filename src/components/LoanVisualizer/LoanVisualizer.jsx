@@ -223,7 +223,7 @@ const LoanVisualizer = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center bg-gray-100 p-4">
+    <div className="flex flex-col items-center bg-gray-100 p-4">
       <h1 className="text-2xl font-bold mb-4">Loan Visualizer</h1>
       {!chartData ? (
         <div className="bg-white p-6 rounded shadow-md w-full max-w-md">

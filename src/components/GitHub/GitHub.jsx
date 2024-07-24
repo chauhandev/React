@@ -22,7 +22,7 @@ export default function GitHub() {
   };
   return (
     <>
-      <div className="flex flex-col items-center  min-h-screen bg-gray-100 p-6">
+      <div className="flex flex-col items-center  bg-gray-100 p-6">
         <header className="bg-white shadow-md rounded p-6 text-center w-full max-w-md">
           <h1 className="text-2xl font-bold mb-4">GitHub User Fetcher</h1>
           <input

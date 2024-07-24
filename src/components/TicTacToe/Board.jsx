@@ -1,5 +1,5 @@
-import React ,{useState} from 'react';
 import Square from './Square';
+import React ,{useState,useEffect} from 'react';
 
 
 function Board(props) {
@@ -8,6 +8,13 @@ function Board(props) {
     const [isXTurn, setIsXTurn] = useState(true);
     const [winner, setWinner] = useState(null);
 
+    useEffect(()=>{
+      let isAllSquareMarked =  state.every(val => val !== null);
+      if(isAllSquareMarked){
+        resetBoard();
+      }
+
+    },[state])
     const renderSquare = (i) => {
         return <Square key={i} value={state[i]} onClick={()=> handleClick(i)} />;
       };
@@ -16,6 +23,7 @@ function Board(props) {
         if(state[i] == null){
             const copy = [...state];
             copy[i] =  isXTurn ? "X":"O";
+
             setState(copy);
             setIsXTurn(!isXTurn);
             checkWin(copy,props.size);
@@ -95,7 +103,7 @@ function Board(props) {
             row.push(renderSquare(count++));
           }
           board.push(
-            <div key={i} className="board-row">
+            <div key={i} className="flex flex-row items-center justify-center ">
               {row}
             </div>
           );
